@@ -23,8 +23,9 @@ from sklearn.metrics import accuracy_score
 # то есть надо пять колонок спиртов заместить на одну колонку с названием спирта? Дописать сзади и удалить эти?
 
 alcohols = ["1-Octanol", "1-Propanol", "2-Butanol", "2-propanol", "1-isobutanol"]
-concentrarions = [0.200, 0.300, 0.400, 0.500, 0.600]
-conc_columns = ['0.799_0.201', '0.799_0.201.1', '0.700_0.300', '0.700_0.300.1', '0.600_0.400', '0.600_0.400.1', '0.501_0.499', '0.501_0.499.1', '0.400_0.600', '0.400_0.600.1'] 
+#concentrarions = [0.200, 0.300, 0.400, 0.500, 0.600]
+#conc_columns = ['0.799_0.201', '0.799_0.201.1', '0.700_0.300', '0.700_0.300.1', '0.600_0.400', '0.600_0.400.1', '0.501_0.499', '0.501_0.499.1', '0.400_0.600', '0.400_0.600.1'] 
+concentrations = {'0.799_0.201':0.200, '0.799_0.201.1':0.200, '0.700_0.300':0.300, '0.700_0.300.1':0.300, '0.600_0.400':0.400, '0.600_0.400.1':0.400, '0.501_0.499':0.500, '0.501_0.499.1':0.500, '0.400_0.600':0.600, '0.400_0.600.1':0.600}
 
 # Сенсоры тоже надо перевести в цифру:
 # Sensor name MIP ratio NP ratio -> chapter of MIP MIP/NP
@@ -35,9 +36,10 @@ conc_columns = ['0.799_0.201', '0.799_0.201.1', '0.700_0.300', '0.700_0.300.1', 
 # QCM12 0 1 => 0.0
 
 # это надо было в словарь... https://stackoverflow.com/questions/36244380/enumerate-for-dictionary-in-python 
-sensors = [0.5, 1.0, 0.67, 0.33, 0.0]
+# sensors = [0.5, 1.0, 0.67, 0.33, 0.0]
+# files = ['QCM3.csv', 'QCM6.csv', 'QCM7.csv', 'QCM10.csv', 'QCM12.csv']
+sensors = {'QCM3.csv': 0.5, 'QCM6.csv': 1.0, 'QCM7.csv': 0.67, 'QCM10.csv': 0.33, 'QCM12.csv': 0.0}
 
-files = ['QCM3.csv', 'QCM6.csv', 'QCM7.csv', 'QCM10.csv', 'QCM12.csv']
 file_size = 250 # unsafe if lenght of files differs
 
 #  берем таблицу (или сразу имя файла?), тип сенсора (а тогда уж и какие-то другие параметры...), и возвращаем в формате "концентрация газа, тип сенсора, тип спирта, показания датчика."
@@ -59,49 +61,24 @@ def draw_3d(data):
 
 # Data load =========================
 
-df = pd.read_csv(files[0], sep=';') # без разделителя имена не распознаются, хотя числа - распознаются.
-print(df.head())
+df_full = pd.DataFrame(columns = ['Concentration', 'Sensor', 'Readings','1-Octanol', '1-Propanol', '2-Butanol', '2-propanol', '1-isobutanol', 'Alcohol'], index = [i for i in range(0, file_size*len(sensors))])
 
-
-# make new table and fill it 
-   # минусы - нечисловые объекты "спирты"
-
-# df_full = pd.DataFrame(columns = ['Concentration', 'Sensor', 'Alcohol', 'Readings'], index = [i for i in range(0, file_size*len(files))])
-
-
-# for file_index, file_item in enumerate(files):
-    # df = pd.read_csv(files[file_index], sep=';')
-
-    # for i in range(file_size):
-        # df_full.at[file_index*file_size + i,"Sensor"] = sensors[file_index]
-        
-    # for i in range(df.shape[0]):
-        # for j in alcohols:
-            # if df.at[i, j] == 1:   
-                # for k in range(10):
-                    # df_full.at[file_index*file_size + i*10 + k, "Alcohol"] = j
-        # for index, item in enumerate(conc_columns):
-            # df_full.at[file_index*file_size + i*10 + index, "Concentration"] = concentrarions[index // 2]
-            # df_full.at[file_index*file_size + i*10 + index, "Readings"] = df.at[i, conc_columns[index]]
-
-   
-# или другая таблица   
-df_full = pd.DataFrame(columns = ['Concentration', 'Sensor', 'Readings','1-Octanol', '1-Propanol', '2-Butanol', '2-propanol', '1-isobutanol'], index = [i for i in range(0, file_size*len(files))])
-
-for file_index, file_item in enumerate(files):
-    df = pd.read_csv(files[file_index], sep=';')
+for sens_index, (sens_name, sens_ratio) in enumerate(sensors.items()):
+    df = pd.read_csv(sens_name, sep=';')
 
     for i in range(file_size):
-        df_full.at[file_index*file_size + i,"Sensor"] = sensors[file_index]
+        df_full.at[sens_index*file_size + i,"Sensor"] = sens_ratio 
 
     for i in range(df.shape[0]):
         for j in alcohols:
             for k in range(10):
-                df_full.at[file_index*file_size + i*10 + k, j] = df.at[i,j]
+                df_full.at[sens_index*file_size + i*10 + k, j] = df.at[i,j]
+                if df.at[i, j] == 1:
+                    df_full.at[sens_index*file_size + i*10 + k, "Alcohol"] = j
 
-        for index, item in enumerate(conc_columns):
-            df_full.at[file_index*file_size + i*10 + index, "Concentration"] = concentrarions[index // 2]
-            df_full.at[file_index*file_size + i*10 + index, "Readings"] = df.at[i, conc_columns[index]]
+        for index, (conc_name, conc) in enumerate(concentrations.items()):
+            df_full.at[sens_index*file_size + i*10 + index, "Concentration"] = conc
+            df_full.at[sens_index*file_size + i*10 + index, "Readings"] = df.at[i, conc_name]
 
 
 
@@ -109,7 +86,7 @@ print(df_full)
 
 
 # <WORKS> 
-# df_full.to_csv('df_full2.csv')
+#df_full.to_csv('df_full2.csv')
 
 # <WORKS> try  Scatterplots with targets =-=-=-==========================
 
@@ -201,27 +178,19 @@ dtype: object
 
 # Learning ========================
 
-# separate alcohols from another? Или просто создать отдельные 1D колонки на разные спирты?
+
+# Make a loop for files or part of dataframe
+# возможно надо будет список собирать из значений при переборе?
+for sens_index, (sens_name, sens_ratio) in enumerate(sensors.items()):
+#for sens_name, sens_ratio in enumerate(sensors):
+
 
 X = df_full.iloc[:, :3]
-# y = df_full.iloc[:, 3:]
 
-# одноменных даатфреймов не бывает, нужен просто одномерный массив
-#y = pd.DataFrame(columns = ['Alcohol'], index = [i for i in range(0, file_size*len(files))])
+# одноменных датафреймов не бывает, нужен просто одномерный массив
+y =  list(df_full["Alcohol"])
 
-# y = np.empty([file_size*len(files), 1], dtype=int)
 
-y = []
-
-#print(y)
-
-for i in range(df_full.shape[0]):
-    for index, j  in enumerate(alcohols): #  You can only assign a scalar value not a <class 'str'>
-        if df_full.at[i, j] == 1: # if df.at[i, j] == 1
-            y.append(j)
- #           y[i, 0] = j #[0, i]
-# print(X)
-# 
 
 # Increase the number of iterations (max_iter) or scale the data as shown in:
 #    https://scikit-learn.org/stable/modules/preprocessing.html

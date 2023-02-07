@@ -447,19 +447,34 @@ random classification_report dict:
     
     
     # prediction:
+
+# Выбранная нормировка идет по функции (y = (x – min) / (max – min)), доступно преобрование методом
+# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html
+# Methods 
+# fit(X[, y]) Compute the minimum and maximum to be used for later scaling.
+# inverse_transform(X) Undo the scaling of X according to feature_range.
+# transform(X) Scale features of X according to feature_range.
+
+    test = np.array([-50])
+    scaled_test = min_max_scaler.transform(test.reshape(-1,1))
+    print('for test_value = %5.2f ' % test, 'test_predict = ', scaled_test)
+    # for test_value = -50.00 test_predict =  [[0.85436221]]    
+    
     test = np.array([0.02])    
     test_predict = grid_search.best_estimator_.predict(test.reshape(-1,1))
     print('test_predict for %5.2f =' % test[0], test_predict)
     
-    # test_predict for 0.82 = ['1-Octanol']
-    #  0.22 = ['2-Butanol']
+    # test_predict for 
+    # 0.02 = ['2-Butanol']     
+    # 0.22 = ['2-Butanol']
     # 0.42 = ['1-Propanol']
     # 0.42 = ['2-Butanol']
     # 0.42 = ['1-Propanol']
     # 0.42 = ['2-Butanol']
     # 0.42 = ['1-Propanol']
     # 0.62 = ['1-Propanol']
-    #  0.02 = ['2-Butanol'] 
+    # 0.82 = ['1-Octanol']
+
 '''    
 # Halving Grid Search¶
 
@@ -533,8 +548,6 @@ See the documentation.
 '''
 #print(precision)
 
-
-
 # Debugging:
 #for sens in precision:
 #    print('sens[0]: \n', sens[0])
@@ -553,7 +566,7 @@ for sens in precision:
         
 
 # plt.plot(precision[0],y_log, 'r*' , label = 'Log reg') 
-plt.legend(alcohols, loc = 'center right')
+plt.legend(alcohols, loc = 'upper center')
 
 plt.xlabel('Sensor')
 plt.ylabel('Accuracy')
@@ -562,10 +575,3 @@ plt.show()
 
 #  "на самом деле" надо было анализировать зависимость разпознавания от концентрации и показать в конце, какая концентрация распознается надежно и какая не надежно. 
 # Но вообще тк смеси конские - то все должно быть надежно.
-# непонятно только как нормировать экспериментальные данные, тк формула нормировки неизвестна. Приходится подставлять числа от 0 до 1. Нужно знать параметры минимума и максимума откуда-то (y = (x – min) / (max – min))
-# видимо функции есть?
-# https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html
-# Methods 
-# fit(X[, y]) Compute the minimum and maximum to be used for later scaling.
-# inverse_transform(X) Undo the scaling of X according to feature_range.
-# transform(X) Scale features of X according to feature_range.

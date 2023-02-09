@@ -1,0 +1,281 @@
+>python ml_alcohol4no_conc.py
+              precision    recall  f1-score   support
+
+   1-Octanol       0.67      0.92      0.77        13
+  1-Propanol       0.17      0.38      0.23         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.38      0.57      0.46        14
+  2-propanol       0.17      0.07      0.10        14
+
+    accuracy                           0.38        63
+   macro avg       0.28      0.39      0.31        63
+weighted avg       0.28      0.38      0.31        63
+
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+grid_search:
+ GridSearchCV(estimator=Pipeline(steps=[('scaler', StandardScaler()),
+                                       ('clf',
+                                        LogisticRegression(max_iter=1000))]),
+             n_jobs=2,
+             param_grid={'clf__C': array([0.01, 0.12, 0.23, 0.34, 0.45, 0.56, 0.67, 0.78, 0.89, 1.  ]),
+                         'clf__penalty': ['l2'], 'clf__random_state': [2023],
+                         'scaler__with_mean': [True, False]},
+             verbose=1)
+param_name and best_parameters[param_name]:
+
+clf__C: 0.23
+param_name and best_parameters[param_name]:
+
+clf__penalty: l2
+param_name and best_parameters[param_name]:
+
+clf__random_state: 2023
+param_name and best_parameters[param_name]:
+
+scaler__with_mean: True
+grid classification_report:
+               precision    recall  f1-score   support
+
+   1-Octanol       0.62      1.00      0.76        13
+  1-Propanol       0.15      0.38      0.21         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.38      0.57      0.46        14
+  2-propanol       0.00      0.00      0.00        14
+
+    accuracy                           0.38        63
+   macro avg       0.23      0.39      0.29        63
+weighted avg       0.23      0.38      0.29        63
+
+Fitting 5 folds for each of 10 candidates, totalling 50 fits
+clf__C: 0.23
+clf__penalty: l2
+clf__random_state: 2023
+scaler__with_mean: True
+C:\Users\Peter\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:420: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
+  warnings.warn(
+for test_value = -50.00  test_predict =  [[0.84764532]]
+test_predict for  0.02 = ['2-Butanol']
+              precision    recall  f1-score   support
+
+   1-Octanol       0.53      0.69      0.60        13
+  1-Propanol       0.16      0.38      0.22         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.39      0.50      0.44        14
+  2-propanol       0.33      0.21      0.26        14
+
+    accuracy                           0.35        63
+   macro avg       0.28      0.36      0.30        63
+weighted avg       0.29      0.35      0.31        63
+
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+grid_search:
+ GridSearchCV(estimator=Pipeline(steps=[('scaler', StandardScaler()),
+                                       ('clf',
+                                        LogisticRegression(max_iter=1000))]),
+             n_jobs=2,
+             param_grid={'clf__C': array([0.01, 0.12, 0.23, 0.34, 0.45, 0.56, 0.67, 0.78, 0.89, 1.  ]),
+                         'clf__penalty': ['l2'], 'clf__random_state': [2023],
+                         'scaler__with_mean': [True, False]},
+             verbose=1)
+param_name and best_parameters[param_name]:
+
+clf__C: 0.34
+param_name and best_parameters[param_name]:
+
+clf__penalty: l2
+param_name and best_parameters[param_name]:
+
+clf__random_state: 2023
+param_name and best_parameters[param_name]:
+
+scaler__with_mean: True
+grid classification_report:
+               precision    recall  f1-score   support
+
+   1-Octanol       0.52      0.85      0.65        13
+  1-Propanol       0.15      0.38      0.21         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.35      0.43      0.39        14
+  2-propanol       0.60      0.21      0.32        14
+
+    accuracy                           0.37        63
+   macro avg       0.33      0.37      0.31        63
+weighted avg       0.34      0.37      0.32        63
+
+Fitting 5 folds for each of 10 candidates, totalling 50 fits
+clf__C: 0.56
+clf__penalty: l2
+clf__random_state: 2023
+scaler__with_mean: False
+C:\Users\Peter\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:420: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
+  warnings.warn(
+for test_value = -50.00  test_predict =  [[0.91182944]]
+test_predict for  0.02 = ['2-Butanol']
+              precision    recall  f1-score   support
+
+   1-Octanol       0.50      0.62      0.55        13
+  1-Propanol       0.21      0.38      0.27         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.33      0.43      0.38        14
+  2-propanol       0.40      0.43      0.41        14
+
+    accuracy                           0.37        63
+   macro avg       0.29      0.37      0.32        63
+weighted avg       0.29      0.37      0.32        63
+
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+grid_search:
+ GridSearchCV(estimator=Pipeline(steps=[('scaler', StandardScaler()),
+                                       ('clf',
+                                        LogisticRegression(max_iter=1000))]),
+             n_jobs=2,
+             param_grid={'clf__C': array([0.01, 0.12, 0.23, 0.34, 0.45, 0.56, 0.67, 0.78, 0.89, 1.  ]),
+                         'clf__penalty': ['l2'], 'clf__random_state': [2023],
+                         'scaler__with_mean': [True, False]},
+             verbose=1)
+param_name and best_parameters[param_name]:
+
+clf__C: 0.67
+param_name and best_parameters[param_name]:
+
+clf__penalty: l2
+param_name and best_parameters[param_name]:
+
+clf__random_state: 2023
+param_name and best_parameters[param_name]:
+
+scaler__with_mean: True
+grid classification_report:
+               precision    recall  f1-score   support
+
+   1-Octanol       0.50      0.62      0.55        13
+  1-Propanol       0.21      0.38      0.27         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.33      0.43      0.38        14
+  2-propanol       0.40      0.43      0.41        14
+
+    accuracy                           0.37        63
+   macro avg       0.29      0.37      0.32        63
+weighted avg       0.29      0.37      0.32        63
+
+Fitting 5 folds for each of 10 candidates, totalling 50 fits
+clf__C: 0.78
+clf__penalty: l2
+clf__random_state: 2023
+scaler__with_mean: False
+C:\Users\Peter\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:420: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
+  warnings.warn(
+for test_value = -50.00  test_predict =  [[0.62767694]]
+test_predict for  0.02 = ['2-Butanol']
+              precision    recall  f1-score   support
+
+   1-Octanol       0.60      0.69      0.64        13
+  1-Propanol       0.16      0.38      0.22         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.40      0.57      0.47        14
+  2-propanol       0.22      0.14      0.17        14
+
+    accuracy                           0.35        63
+   macro avg       0.28      0.36      0.30        63
+weighted avg       0.28      0.35      0.30        63
+
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+grid_search:
+ GridSearchCV(estimator=Pipeline(steps=[('scaler', StandardScaler()),
+                                       ('clf',
+                                        LogisticRegression(max_iter=1000))]),
+             n_jobs=2,
+             param_grid={'clf__C': array([0.01, 0.12, 0.23, 0.34, 0.45, 0.56, 0.67, 0.78, 0.89, 1.  ]),
+                         'clf__penalty': ['l2'], 'clf__random_state': [2023],
+                         'scaler__with_mean': [True, False]},
+             verbose=1)
+param_name and best_parameters[param_name]:
+
+clf__C: 0.34
+param_name and best_parameters[param_name]:
+
+clf__penalty: l2
+param_name and best_parameters[param_name]:
+
+clf__random_state: 2023
+param_name and best_parameters[param_name]:
+
+scaler__with_mean: True
+grid classification_report:
+               precision    recall  f1-score   support
+
+   1-Octanol       0.62      0.77      0.69        13
+  1-Propanol       0.16      0.38      0.22         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.40      0.57      0.47        14
+  2-propanol       0.25      0.14      0.18        14
+
+    accuracy                           0.37        63
+   macro avg       0.29      0.37      0.31        63
+weighted avg       0.29      0.37      0.32        63
+
+Fitting 5 folds for each of 10 candidates, totalling 50 fits
+clf__C: 0.23
+clf__penalty: l2
+clf__random_state: 2023
+scaler__with_mean: True
+C:\Users\Peter\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:420: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
+  warnings.warn(
+for test_value = -50.00  test_predict =  [[0.80481337]]
+test_predict for  0.02 = ['2-Butanol']
+              precision    recall  f1-score   support
+
+   1-Octanol       0.60      0.92      0.73        13
+  1-Propanol       0.17      0.38      0.23         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.29      0.43      0.34        14
+  2-propanol       0.25      0.07      0.11        14
+
+    accuracy                           0.35        63
+   macro avg       0.26      0.36      0.28        63
+weighted avg       0.26      0.35      0.28        63
+
+Fitting 5 folds for each of 20 candidates, totalling 100 fits
+grid_search:
+ GridSearchCV(estimator=Pipeline(steps=[('scaler', StandardScaler()),
+                                       ('clf',
+                                        LogisticRegression(max_iter=1000))]),
+             n_jobs=2,
+             param_grid={'clf__C': array([0.01, 0.12, 0.23, 0.34, 0.45, 0.56, 0.67, 0.78, 0.89, 1.  ]),
+                         'clf__penalty': ['l2'], 'clf__random_state': [2023],
+                         'scaler__with_mean': [True, False]},
+             verbose=1)
+param_name and best_parameters[param_name]:
+
+clf__C: 0.34
+param_name and best_parameters[param_name]:
+
+clf__penalty: l2
+param_name and best_parameters[param_name]:
+
+clf__random_state: 2023
+param_name and best_parameters[param_name]:
+
+scaler__with_mean: True
+grid classification_report:
+               precision    recall  f1-score   support
+
+   1-Octanol       0.57      0.92      0.71        13
+  1-Propanol       0.15      0.38      0.21         8
+1-isobutanol       0.00      0.00      0.00        14
+   2-Butanol       0.29      0.43      0.34        14
+  2-propanol       1.00      0.07      0.13        14
+
+    accuracy                           0.35        63
+   macro avg       0.40      0.36      0.28        63
+weighted avg       0.42      0.35      0.28        63
+
+Fitting 5 folds for each of 10 candidates, totalling 50 fits
+clf__C: 0.45
+clf__penalty: l2
+clf__random_state: 2023
+scaler__with_mean: False
+C:\Users\Peter\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\base.py:420: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
+  warnings.warn(
+for test_value = -50.00  test_predict =  [[0.85436221]]
+test_predict for  0.02 = ['2-Butanol']

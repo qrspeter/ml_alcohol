@@ -565,15 +565,6 @@ See the documentation.
 '''
 #print(precision)
 
-# Debugging:
-#for sens in precision:
-#    print('sens[0]: \n', sens[0])
-#    print('sens[1]: \n', sens[1])    
-#    for alc, param in sens[1].items():  
-#        print('alc, param: \n', alc, param)
-#        for par, val in param.items():
-##            if val == 'precision':
-#            print('par, val: \n', par, val)
 
 color_lst = ['b*', 'g*', 'r*', 'm*', 'k*']    
 for sens in precision:

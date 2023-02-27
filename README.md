@@ -1,6 +1,6 @@
 # ml_alcohol
 
-Dataset is taken from https://archive.ics.uci.edu/ml/datasets/Alcohol+QCM+Sensor+Dataset
+Dataset is taken from https://archive.ics.uci.edu/ml/datasets/Alcohol+QCM+Sensor+Dataset:
 
 M. Fatih Adak, Peter Lieberzeit, Purim Jarujamrus, Nejat Yumusak, Classification of alcohols obtained by QCM sensors with different characteristics using ABC based neural network, Engineering Science and Technology, an International Journal, 2019,ISSN 2215-0986
 

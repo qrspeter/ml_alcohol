@@ -21,11 +21,11 @@ sensor in five different concentrations.
  
 These concentrations are:
 Concentration Air ratio (ml) Gas ratio (ml)
-1 0.799 0.201
-2 0.700 0.300
-3 0.600 0.400
-4 0.501 0.499
-5 0.400 0.600
+* 1 0.799 0.201
+* 2 0.700 0.300
+* 3 0.600 0.400
+* 4 0.501 0.499
+* 5 0.400 0.600
 
 There are two different channels in these QCM sensors. One of
 these channel includes molecularly imprinted polymers (MIP),
@@ -33,9 +33,14 @@ and the other includes nanoparticles (NP). Diverse QCM sensor
 structures are obtained using different MIP and NP ratios.
 MIP and MP ratios used in the QCM sensors are:
 
-Sensor name MIP ratio NP ratio
-QCM3 1 1
-QCM6 1 0
-QCM7 1 0.5
-QCM10 1 2
-QCM12 0 1
+Sensor name MIP : NP ratio
+* QCM3 1 : 1
+* QCM6 1 : 0
+* QCM7 1 : 0.5
+* QCM10 1 : 2
+* QCM12 0 : 1
+
+## Files:
+
+* alcohol_single.ipynb - testing single sensors
+* alcohol_pairs.ipynb - testing of a pair sensor
